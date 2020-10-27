@@ -1,7 +1,7 @@
 #Parse the CVE's from the NVD JSON Data feed based on a custom list of CPEs. 
 
 $MinimumScore = 7
-$BasePath = 'C:\Users\RHollingshead\OneDrive - Oceaneering\Documents\CVE\'
+$BasePath = 'D:\OneDrive - Occurative\Documents\CVE\'
 $MetaList = @('https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-2002',
 'https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-2003',
 'https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-2004',
@@ -111,7 +111,7 @@ ForEach ($MetaItem in $MetaList) {
     ForEach ($CVE in $Feed[0].CVE_Items) {
         
         ForEach ($CPE in $CVE.configurations.nodes.cpe_match) {
-            If ($CPE.cpe23Uri -imatch 'efficientip' -and $CPE.vulnerable -eq $True -and ($CVE.impact.baseMetricV3.cvssV3.baseScore -ge $MinimumScore -or $CVE.impact.baseMetricV3.cvssV3.baseScore -ge $MinimumScore)) {
+            If ($CPE.cpe23Uri -imatch 'okta' -and $CPE.vulnerable -eq $True -and ($CVE.impact.baseMetricV3.cvssV3.baseScore -ge $MinimumScore -or $CVE.impact.baseMetricV3.cvssV3.baseScore -ge $MinimumScore)) {
                 
                 [array]$CPEObject = $CPE.cpe23Uri -split (':')
     
