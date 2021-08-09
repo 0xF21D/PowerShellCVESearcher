@@ -224,3 +224,6 @@ Function Get-BasicCVEDetails {
         Return $ApplicableCVE
     }
 }
+
+# Update the CVE Cache when loaded. 
+Update-CVECache
