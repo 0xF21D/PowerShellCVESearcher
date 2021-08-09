@@ -124,10 +124,6 @@ Function Search-CVEList {
     process{
 
         [array]$IntermediateList = $null
-        [array]$FinalList = $null
-
-        # Get the path of the files. 
-        $BasePath = Get-CVESearcherPath
         
         # If a range of years are specific call the Get-CVEMetalist function appropriately to return a list of files. 
         # This needs to be improved upon as I don't think it really needs to be written this way. 
