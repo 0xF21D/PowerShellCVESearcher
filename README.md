@@ -4,11 +4,11 @@ Tool to cache and search the NVD CVE database.
 It stores a local copy of the available JSON files in $home/.cve
 
 ## To Use ##
-(note: I'm aware that this is more like a module and less like a powershell script. I'm working to modularize this and add more functions). 
+import-module ./CVESearcher.psm1
 
-import-module ./CVESearcher.ps1
+When loading the module, it will immediately update the local cache of JSON files. The cache is stored in $home/.CVE 
 
-NOTE: When loading the module, it will immediately update the local cache of JSON files. 
+The first time the module is loaded will take a bit longer because each JSON file must be downloaded and unpacked. As of 2021 there are 19 files to download dating back to the year 2002. Subsequent loads of the module will only refresh those files that have changed since the last load. 
 
 ## Functions ##
 
