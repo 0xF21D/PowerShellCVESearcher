@@ -1,4 +1,8 @@
-#Functions to assist in the searching of CVEs published in the National Vulnerability Database
+# CVESearcher.psm1
+# by Robert Hollingshead (robert@roberthollingshead.net)
+
+# This module provides functions to assist in the searching of CVEs published in the National Vulnerability Database
+# You can find the latest version and updates on github: https://github.com/0xF21D/PowerShellCVESearcher
 
 # Helper function to determine the basepath of the CVE JSON files. 
 Function Get-CVESearcherPath
