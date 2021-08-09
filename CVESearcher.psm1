@@ -101,7 +101,7 @@ Function Update-CVECache {
                     $URL = $MetaItem.baseURL + '.json.zip'
                     $ZIPPath = $BasePath + $MetaItem.baseFileName + '.json.zip'
 
-                    Invoke-WebRequest -Uri $URL -OutFile $ZIPPath -
+                    Invoke-WebRequest -Uri $URL -OutFile $ZIPPath
                     $MetaItem.hash = $MetaItem.rawContent[8]
                     Expand-Archive -LiteralPath $ZIPPath -DestinationPath $BasePath -Force
                     Remove-Item -Path $ZIPPath -Force
@@ -147,7 +147,7 @@ Function Search-CVEList {
 
         # Look through each file to extract applicable CVEs. 
         ForEach ($MetaItem in $MetaList) {
-            CPE is required. 
+            If ($CPE.count -eq 1) {
                 $Feed[0].CVE_Items = $Feed[0].CVE_Items | Where-Object {$_.configurations.nodes.cpe_match.cpe23URI -match $CPE}
             } else {
                 ForEach ($CPETerm in $CPE) {
@@ -157,7 +157,6 @@ Function Search-CVEList {
 
             $IntermediateList = $IntermediateList + $Feed[0].CVE_Items
         }
-
 
         # If a minimum or maximum base score is specified, here is where narrow the search. 
         # We need to be mindful of older cvssV2 based CVEs. 
